@@ -35,3 +35,4 @@ for i in range(5):
     print(f"La temperatura media del día {i+1} es: {media:.2f}ºC")
 
 tempMin(tempMinimas)
+buscaTemp(tempMaximas)
