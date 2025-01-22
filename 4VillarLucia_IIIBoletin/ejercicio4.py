@@ -6,34 +6,34 @@
 tempMinimas=[5]
 tempMaximas=[5]
 
-
-#REPASAR#
-def tempMin(temperaturas):
-    minima=min(tempMinimas)
-    print(f"El día con menor temperatura registrada es: {temperaturas.index(minima)+1} con un valor de {minima:.2f}ºC")
-
-#REPASAR#
-def buscaTemp(temperaturas):
-    inputTemp=float(input("Introduzca temperatura máxima a buscar: "))
-    if inputTemp in temperaturas:
-        diasRegistrados=[]
-        for i, temp in enumerate(tempMaximas):  
-            if temp == inputTemp:
-                diasRegistrados.append(i + 1)  
-        print(f"La temperatura máxima de {inputTemp}ºC se ha registrado en los días: {diasRegistrados}")
-    else:
-        print("No se ha registrado ninguna temperatura máxima con ese valor")
-
-
 for i in range(5):
-    min=float(input(f"Introduzca temperatura mínima para el día {i+1}: "))
-    max=float(input(f"Introduzca temperatura máxima para el día {i+1}: "))
-    tempMinimas.append(min)
-    tempMaximas.append(max)
+    minTemp=float(input(f"Introduzca temperatura mínima para el día {i+1}: "))
+    maxTemp=float(input(f"Introduzca temperatura máxima para el día {i+1}: "))
+    tempMinimas.append(minTemp)
+    tempMaximas.append(maxTemp)
 
 for i in range(5):
     media=(tempMinimas[i]+tempMaximas[i])/2
     print(f"La temperatura media del día {i+1} es: {media:.2f}ºC")
+
+def tempMin(temperaturas):
+    minima=min(temperaturas)
+    print("\nDías con temperatura mínima registrada:")
+    for i in range(5):
+        if temperaturas[i] == minima:
+            print(f"Día {i} con un valor de {minima:.2f}ºC")
+    
+
+def buscaTemp(temperaturas):
+    inputTemp=float(input("\nIntroduzca temperatura máxima a buscar: "))
+    print(f"Días con temperatura máxima de {inputTemp}ºC")
+    enc=False
+    for i in range (5):
+        if inputTemp == temperaturas[i]:
+            print(f"Día {i+1}")
+            enc=True
+    if enc==False:
+        print("No se ha registrado ninguna temperatura máxima con ese valor")
 
 tempMin(tempMinimas)
 buscaTemp(tempMaximas)
