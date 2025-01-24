@@ -3,8 +3,8 @@
 #Los días con menos temperatura
 #Se lee una temperatura por teclado y se muestran los días cuya temperatura máxima coincide con ella. 
 # si no existe ningún día se muestra un mensaje de información.
-tempMinimas=[5]
-tempMaximas=[5]
+tempMinimas=[]
+tempMaximas=[]
 
 for i in range(5):
     minTemp=float(input(f"Introduzca temperatura mínima para el día {i+1}: "))
@@ -16,16 +16,18 @@ for i in range(5):
     media=(tempMinimas[i]+tempMaximas[i])/2
     print(f"La temperatura media del día {i+1} es: {media:.2f}ºC")
 
+#REPASAR#
 def tempMin(temperaturas):
     minima=min(temperaturas)
-    print("\nDías con temperatura mínima registrada:")
+    print("Días con temperatura mínima registrada:")
     for i in range(5):
         if temperaturas[i] == minima:
-            print(f"Día {i} con un valor de {minima:.2f}ºC")
+            print(f"Día {i} con un valor de {minima:.1f}ºC")
     
 
+#REPASAR#
 def buscaTemp(temperaturas):
-    inputTemp=float(input("\nIntroduzca temperatura máxima a buscar: "))
+    inputTemp=float(input("Introduzca temperatura máxima a buscar: "))
     print(f"Días con temperatura máxima de {inputTemp}ºC")
     enc=False
     for i in range (5):
