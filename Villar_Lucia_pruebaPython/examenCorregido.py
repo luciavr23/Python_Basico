@@ -37,7 +37,7 @@ listaPesos=[]
 solicitaAlumnos()
 menu()
 opcion=int(input("Selecciona una opción: "))
-while(opcion >0 and opcion<10 and opcion!=9):
+while(opcion!=9):
     if(opcion==1):
         print("Lista de alumnos:",listaAlumnos)
     elif(opcion==2):
@@ -60,8 +60,10 @@ while(opcion >0 and opcion<10 and opcion!=9):
         print("Peso mínimo:",min(listaPesos))
         print("Peso máximo:",max(listaPesos))
         print("Media de peso:",(sum(listaPesos)/len(listaPesos)))
-    else:
+    elif(opcion==8):
         masDe100()
+    else:
+        print("Opción no válida")
     menu()
     opcion=int(input("Selecciona una opción: "))
 

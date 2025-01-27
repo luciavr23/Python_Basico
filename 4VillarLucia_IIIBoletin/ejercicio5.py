@@ -13,6 +13,14 @@ for i in range(5):
 
 for i in range(5):
     suma = 0
+    print(matriz[i])
+    for j in range(5):
+        suma += matriz[i][j]
+        print(matriz[i], end=" ")
+    print("\n")
+    
+for i in range(5):
+    suma = 0
     for j in range(5):
         suma += matriz[i][j]
     print(f"La suma de la fila {i+1} es: {suma}")

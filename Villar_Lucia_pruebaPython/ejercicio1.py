@@ -36,7 +36,7 @@ def anadeAlumno(lista):
     else:
         print("El alumno ya existe")
 
-def crearListaPesos():
+def crearListaPesos(listaPesos):
     listaPesos= [53.2, 141.8, 105.3, 78.2, 60.4]
     print("Lista creada")
 
@@ -71,7 +71,7 @@ def menu(opcion):
         print("Lista original: ",listaAlumnos)
         print("Lista copia: ",listaAlCopia)
     elif opcion==6:
-        crearListaPesos()
+        crearListaPesos(listaPesos)
     elif opcion==7:
         muestraPesos()
     else:
