@@ -2,22 +2,30 @@
 # finaliza cuando el usuario introduzca la cadena “0”. 
 # Se pide mostrar el total de ocurrencias de cada carácter de todas las cadena procesadas.
 
-cadena=input("Intruduzca una cadena / 0 para salir: ")
-
 abecedario={}
 arrayCadenas=[]
 
+#funcion que cuenta las veces que salen las letras de las palabras y las mete en el diccionario 
+    #!!solo las que aparezcan en las palabras del array
+def cuentaConcurrencias(diccionario,array):
+    for palabra in array:
+        for letra in palabra.lower():
+            if letra not in diccionario:
+                diccionario[letra]=1
+            else:
+                diccionario[letra]+=1
+
+#funcion que pinta las letras del diccionario una debajo de otra
+def pintaConcurrencias(diccionario):
+    for letra in diccionario:
+        print(f"{letra} : {diccionario[letra]}")
+
+#inicializar array
+cadena=input("Introduzca una cadena / 0 para salir: ")
 while(cadena!="0"):
     arrayCadenas.append(cadena)
-    cadena=input("Intruduzca una cadena / 0 para salir: ")
+    cadena=input("Introduzca una cadena / 0 para salir: ")
 
 print("Palabras introducidas: " ,arrayCadenas)
-
-for palabra in arrayCadenas:
-    for letra in palabra.lower():
-        if letra not in abecedario:
-            abecedario[letra]=1
-        else:
-            abecedario[letra]+=1
-
-print("Letras que aparecen: ",abecedario)
+cuentaConcurrencias(abecedario,arrayCadenas)
+pintaConcurrencias(abecedario)
