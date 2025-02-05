@@ -9,14 +9,7 @@
 # Tiempos de respuesta: Añadir un temporizador para responder cada pregunta. (import time)
 # Adicionalmente: Ofrecer preguntas de diferentes niveles de dificultad (fácil, medio, difícil).
 import random;
-
-puntos=0
-def niveles():
-    print("Selecciona un nivel de dificultad:")
-    print("1. Fácil")
-    print("2. Medio")
-    print("3. Difícil")
-
+        
 preguntasFac = {
     'ciencia': [
         ('¿Cuántos planetas tiene el sistema solar?', ['7', '8', '9', '10'], '8'),
@@ -71,39 +64,64 @@ preguntasDif = {
     ]
 }
 
+def niveles():
+    print("Selecciona un nivel de dificultad:")
+    print("1. Fácil")
+    print("2. Medio")
+    print("3. Difícil")
+def categorias():
+    print("1. Ciencia")
+    print("2. Historia")
+    print("3. Informática")
+def juego(number):
+    puntos=0
+    nivel=""
+    count=0
+    if number ==1: 
+        nivel="fácil"
+        preguntasDic=preguntasFac
+        count=1
+    elif number==2:
+        nivel="medio"
+        preguntasDic=preguntasMed
+        count=2
+    else:
+        nivel="difícil"
+        preguntasDic=preguntasFac
+        count=3
+    print(f"Has seleccionado el nivel {nivel}.")
+    jugar=input("¿Quieres seleccionar una categoría? (s/n): ")
+    while(jugar=="s"):  
+        categorias()
+        categoria=int(input("Introduce la categoría a responder: ")) 
+        while(categoria<1 or categoria>3):
+            print("Categoría no válida.")
+            categorias()
+            categoria=int(input("Introduce la categoría a responder: "))
+        print("Categoría seleccionada: ",categoria)
+        if(categoria==1):
+            categoria='ciencia'
+        elif(categoria==2):
+            categoria='historia'
+        else:
+            categoria='informática'
+        arrayPreguntas=preguntasDic[categoria]
+        preguntaRespuesta=random.choice(arrayPreguntas)
+        print ("Pregunta:",preguntaRespuesta[0])
+        print("Opciones: ",preguntaRespuesta[1])
+        respuesta=input("Introduce tu respuesta: ")
+        if(respuesta.lower().replace(" ","")==preguntaRespuesta[2].lower().replace(" ","")):  
+            print("Respuesta correcta")
+            puntos+=count
+        else:
+            print("Respuesta incorrecta")
+        print("Puntos: ",puntos)
+        jugar=input("¿Quieres seleccionar una categoría? (s/n): ")
+
 print("Bienvenido al trivial.")
 niveles()
 respuesta=int(input("Introduce el número del nivel: "))
-if respuesta ==1: 
-    print("Has seleccionado el nivel fácil.")
-    categoria=random.choice(list(preguntasFac.keys()))
-    print("La categoría seleccionada es: ",categoria)
-    pregunta=random.choice(preguntasFac[categoria])
-    print(pregunta[0])
-    print("Opciones: ",pregunta[1])
-    respuesta=input("Introduce tu respuesta: ")
-    if(respuesta==pregunta[2]):
-        print("Respuesta correcta")
-        puntos+=1
-elif respuesta==2:
-    print("Has seleccionado el nivel medio.")
-    categoria=random.choice(list(preguntasMed.keys()))
-    print("La categoría seleccionada es: ",categoria)
-    pregunta=random.choice(preguntasFac[categoria])
-    print(pregunta[0])
-    print("Opciones: ",pregunta[1])
-    respuesta=input("Introduce tu respuesta: ")
-    if(respuesta==pregunta[2]):
-        print("Respuesta correcta")
-        puntos+=1
-else: 
-    print("Has seleccionado el nivel dificil.")
-    categoria=random.choice(list(preguntasDif.keys()))
-    print("La categoría seleccionada es: ",categoria)
-    pregunta=random.choice(preguntasFac[categoria])
-    print(pregunta[0])
-    print("Opciones: ",pregunta[1])
-    respuesta=input("Introduce tu respuesta: ")
-    if(respuesta==pregunta[2]):
-        print("Respuesta correcta")
-        puntos+=1
+while(respuesta<1 or respuesta>3):
+    print("Opción inválida")
+    respuesta=int(input("Introduce el número del nivel: "))
+juego(respuesta)

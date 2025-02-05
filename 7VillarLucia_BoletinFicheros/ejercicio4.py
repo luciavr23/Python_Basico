@@ -8,24 +8,26 @@ def clasificaPalabras(nombreFich):
     if(os.path.isfile(nombreFich)):
         corte=int(input("Introduzca la longitud de corte: "))
         count=0
+        contenidoMenor=""
+        contenidoMayor=""
         with open(fichero,encoding="utf-8") as f:
             linea=f.readline()
             while(linea):
                 count=0
-                for f in linea:
+                for caracter in linea.replace("\n","").replace(" ",""):
                     count+=1
                 if(count<corte):
-                    with open("menor.txt",mode="a") as fm:
-                        fm.write(linea)
+                   contenidoMenor+=linea
                 else:
-                    with open("mayor.txt",mode="a") as fy:
-                        fy.write(linea)
+                    contenidoMayor+=linea
                 linea=f.readline()
+            with open("menor.txt",mode="w") as fm:
+                        fm.write(contenidoMenor)
+            with open("mayor.txt",mode="w") as fy:
+                        fy.write(contenidoMayor)
 
     else:
         print("El fichero no existe")
-
-
 
 fichero=input("Introduzca el nombre del fichero a leer: ")
 punto=fichero.rfind(".")
@@ -39,4 +41,3 @@ if(formato == ".txt"):
     clasificaPalabras(fichero)
 
     
-

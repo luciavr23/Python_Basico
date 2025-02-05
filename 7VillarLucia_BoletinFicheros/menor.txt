@@ -1,0 +1,7 @@
+koala
+gato
+boa
+pato
+rana
+reno
+ñú

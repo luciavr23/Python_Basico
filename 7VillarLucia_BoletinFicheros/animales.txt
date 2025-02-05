@@ -2,7 +2,7 @@ koala
 orangután
 serpiente
 conejo
-gato 
+gato
 liebre
 ornitorrinco
 castor
@@ -11,3 +11,9 @@ pantera
 perrito de la pradera
 perrito
 capibara
+boa
+pato
+delfín 
+rana
+reno
+ñú
