@@ -11,6 +11,7 @@ def clasificaPalabras(nombreFich):
         with open(fichero,encoding="utf-8") as f:
             linea=f.readline()
             while(linea):
+                count=0
                 for f in linea:
                     count+=1
                 if(count<corte):
@@ -30,6 +31,12 @@ fichero=input("Introduzca el nombre del fichero a leer: ")
 punto=fichero.rfind(".")
 if(punto!=-1):
     formato=fichero[punto:]
-    if(formato == ".txt"):
-        clasificaPalabras(fichero)
+else:
+    fichero=fichero+".txt"
+    formato=".txt"
+
+if(formato == ".txt"):
+    clasificaPalabras(fichero)
+
+    
 
