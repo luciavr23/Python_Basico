@@ -33,9 +33,13 @@ else:
 ##SI LOS FORMATOS SON CORRECTOS SE COPIA EL CONTENIDO DEL FICHERO ORIGEN EN EL FICHERO COPIA
 if origen and copia and  os.path.isfile (nombreOrigen):
     contenido=""
-    with open(nombreOrigen,encoding="utf-8",mode="r") as f:
-        contenido+=f.readline()
-    with open(nombreCopia,encoding="utf-8",mode="w") as f:
-        f.write(contenido)
+    with open(nombreOrigen,encoding="utf-8",mode="r") as fo:
+        linea = fo.readline()
+        while linea:
+            contenido+=linea
+            linea = fo.readline()
+       
+    with open(nombreCopia,encoding="utf-8",mode="w") as fc:
+        fc.write(contenido)
 else:
     print("No se pudo realizar la copia del fichero, uno de los dos ficheros no es de texto o no se ha encontrado")
